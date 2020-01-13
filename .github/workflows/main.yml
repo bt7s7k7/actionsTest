@@ -1,6 +1,8 @@
 name: CI
 
-on: [create]
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -9,9 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+      with:
+        ref: ${{ github.event.tag_name }}
     - name: Setup node
       uses: actions/setup-node
-      if: github.event.ref_type == "type"
     - name: Run npm start
       run: npm start
-      if: github.event.ref_type == "type"
