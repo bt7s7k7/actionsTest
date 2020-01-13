@@ -17,3 +17,8 @@ jobs:
       uses: actions/setup-node@v1.1.0
     - name: Run npm start
       run: npm start
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1  
+      with:
+        name: build
+        path: .
