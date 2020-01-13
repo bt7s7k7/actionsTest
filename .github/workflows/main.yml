@@ -1,11 +1,11 @@
-name: CI
+name: Test
 
 on:
   release:
     types: [published]
 
 jobs:
-  build:
+  start:
 
     runs-on: ubuntu-latest
 
