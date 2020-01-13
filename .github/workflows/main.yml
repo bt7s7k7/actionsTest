@@ -1,17 +1,19 @@
-name: CI
+name: Test
 
-on: [create]
+on:
+  release:
+    types: [published]
 
 jobs:
-  build:
+  start:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
-    - name: Setup node
-      uses: actions/setup-node
-      if: github.event.ref_type == "type"
+      with:
+        ref: ${{ github.event.tag_name }}
+    - name: Setup Node.js for use with actions
+      uses: actions/setup-node@v1.1.0
     - name: Run npm start
       run: npm start
-      if: github.event.ref_type == "type"
