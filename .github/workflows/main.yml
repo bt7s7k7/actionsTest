@@ -1,0 +1,15 @@
+name: CI
+
+on: []
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup node
+      uses: actions/setup-node
+    - name: Run npm start
+      run: npm start
