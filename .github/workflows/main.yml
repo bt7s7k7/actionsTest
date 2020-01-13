@@ -1,0 +1,17 @@
+name: CI
+
+on: [create]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup node
+      uses: actions/setup-node
+      if: github.event.ref_type == "type"
+    - name: Run npm start
+      run: npm start
+      if: github.event.ref_type == "type"
